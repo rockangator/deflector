@@ -1,0 +1,345 @@
+/* Deflector popup — requires fonts, type, tokens, components loaded first (see popup.html). */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html.deflector-popup,
+body {
+  background: var(--deflector-paper);
+}
+
+body {
+  font-family: var(--deflector-font-ui);
+  color: var(--deflector-paper-ink);
+  width: 348px;
+  min-height: 392px;
+  padding: 4px 4px 7px 4px;
+  font-size: var(--type-body);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Outer chrome — same sketch border + offset shadow as panels/buttons */
+.deflector-popup-shell {
+  width: 340px;
+  min-height: 380px;
+  overflow: hidden;
+  border-radius: var(--deflector-radius-md);
+}
+
+
+
+.deflector-popup-header {
+  padding: 10px 14px;
+  border-bottom: var(--deflector-border-width) solid var(--deflector-sketch);
+  background: var(--deflector-paper);
+  box-shadow: inset 3px 0 0 var(--deflector-coral);
+  border-radius: calc(var(--deflector-radius-md) - 2px) calc(var(--deflector-radius-md) - 2px) 0 0;
+}
+
+
+
+.deflector-popup-brand {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  min-width: 0;
+
+}
+
+
+
+.deflector-popup-brand-text {
+
+  min-width: 0;
+
+  flex: 1;
+
+}
+
+
+
+.deflector-logo-mark {
+
+  width: 28px !important;
+
+  height: 28px !important;
+
+  max-width: 28px !important;
+
+  max-height: 28px !important;
+
+  min-width: 0;
+
+  min-height: 0;
+
+  flex-shrink: 0;
+
+  display: block;
+
+  overflow: hidden;
+
+  background-image: url("./assets/logo-mark.png");
+
+  background-size: contain;
+
+  background-repeat: no-repeat;
+
+  background-position: center;
+
+  border-radius: calc(var(--deflector-fab-radius) - 4px);
+
+}
+
+
+
+header h1,
+
+.deflector-popup-brand-text h1 {
+
+  font-family: var(--deflector-font-display);
+
+  font-size: var(--type-heading);
+
+  font-weight: 400;
+
+  letter-spacing: var(--tracking-heading);
+
+  line-height: 1.2;
+
+}
+
+
+
+.deflector-host-tag {
+
+  font-size: var(--type-caption);
+
+  color: var(--deflector-ink-muted);
+
+  margin-top: 2px;
+
+  line-height: var(--leading-caption);
+
+  letter-spacing: var(--tracking-ui);
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+  font-weight: 500;
+
+}
+
+
+
+main {
+
+  padding: 14px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--deflector-space-gap-md);
+
+}
+
+
+
+.stat-value {
+
+  font-family: var(--deflector-font-display);
+
+  font-size: 2rem;
+
+  font-weight: 400;
+
+  color: var(--deflector-coral-deep);
+
+  line-height: 1.15;
+
+  letter-spacing: var(--tracking-display);
+
+}
+
+
+
+.stat-label {
+
+  font-size: var(--type-label);
+
+  color: var(--deflector-ink-muted);
+
+  margin-top: var(--deflector-space-gap-xs);
+
+  line-height: var(--leading-ui);
+
+  font-weight: 500;
+
+}
+
+
+
+.stat-all-clear .stat-value {
+
+  color: var(--deflector-sage);
+
+}
+
+
+
+.stat-all-clear {
+
+  box-shadow: var(--deflector-shadow-sketch), inset 4px 0 0 var(--deflector-sage);
+
+}
+
+
+
+.stat-has-findings {
+
+  box-shadow: var(--deflector-shadow-sketch), inset 4px 0 0 var(--deflector-coral);
+
+  background: color-mix(in srgb, var(--deflector-cat-urgency) 18%, var(--deflector-paper-dark)) !important;
+
+}
+
+
+
+.deflector-page-context:not(:empty) {
+
+  padding: 5px 8px;
+
+  border-radius: var(--deflector-radius-sm);
+
+  background: color-mix(in srgb, var(--deflector-cat-social_proof) 28%, var(--deflector-paper));
+
+  border: 1.5px solid color-mix(in srgb, var(--deflector-cat-social_proof-accent) 35%, var(--deflector-sketch));
+
+  color: var(--deflector-cat-social_proof-accent);
+
+  font-weight: 600;
+
+  font-size: var(--type-caption);
+
+}
+
+
+
+.deflector-popup-settings {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--deflector-space-gap-sm);
+
+}
+
+
+
+.deflector-popup-settings .deflector-field-label {
+
+  color: var(--deflector-sage);
+
+  font-weight: 600;
+
+}
+
+
+
+.categories {
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: var(--deflector-space-gap-xs);
+
+  margin-top: var(--deflector-space-gap-sm);
+
+}
+
+
+
+details.advanced {
+
+  background: color-mix(in srgb, var(--deflector-cat-misdirection) 22%, var(--deflector-paper-dark)) !important;
+
+  box-shadow: var(--deflector-shadow-sketch), inset 4px 0 0 var(--deflector-chrome-advanced-accent);
+
+}
+
+
+
+details.advanced summary {
+
+  cursor: pointer;
+
+  font-size: var(--type-label);
+
+  font-weight: 600;
+
+  color: var(--deflector-chrome-advanced-accent);
+
+  line-height: var(--leading-ui);
+
+  padding: 2px 0;
+
+}
+
+
+
+details.advanced summary:focus-visible {
+
+  outline: 2px solid var(--deflector-coral);
+
+  outline-offset: 2px;
+
+  border-radius: var(--deflector-radius-sm);
+
+}
+
+
+
+details.advanced[open] summary {
+
+  margin-bottom: var(--deflector-space-gap-md);
+
+}
+
+
+
+.advanced-check {
+
+  margin-bottom: var(--deflector-space-gap-md);
+
+}
+
+
+
+.actions {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--deflector-space-gap-sm);
+
+}
+
+
+
+.actions .deflector-btn + .deflector-btn {
+
+  margin-top: 0;
+
+}
+

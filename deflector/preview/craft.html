@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deflector craft preview</title>
+  <link rel="stylesheet" href="/src/ui/fonts.css" />
+  <link rel="stylesheet" href="/src/ui/type.css" />
+  <link rel="stylesheet" href="/src/ui/tokens.css" />
+  <link rel="stylesheet" href="/src/ui/components.css" />
+  <link rel="stylesheet" href="/src/ui/motion.css" />
+  <link rel="stylesheet" href="/src/deflector.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff;
+      color: #111;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px 120px;
+      line-height: 1.5;
+    }
+    .mock-product h1 { font-size: 28px; margin-bottom: 8px; }
+    .mock-price { font-size: 22px; font-weight: 700; margin: 16px 0; }
+    .mock-urgency { color: #b12704; font-weight: 600; }
+    .mock-scarcity { color: #007600; font-weight: 600; }
+    .mock-social { font-size: 14px; color: #565959; }
+    /* Preview: explicit FAB anchor (craft.html is not a content script) */
+    #deflector-fab {
+      position: fixed !important;
+      top: 20vh !important;
+      right: 0 !important;
+      left: auto !important;
+      bottom: auto !important;
+      z-index: 2147483647 !important;
+    }
+    #deflector-fab .deflector-logo-mark {
+      background-image: url('/src/ui/assets/logo-mark.png');
+    }
+    .deflector-sidebar-brand .deflector-logo-mark {
+      background-image: url('/src/ui/assets/logo-mark.png');
+    }
+  </style>
+</head>
+<body>
+  <article class="mock-product">
+    <h1>Wireless Noise-Cancelling Headphones — Pro Edition</h1>
+    <p class="mock-social">4.6 out of 5 stars · 12,847 ratings</p>
+    <p class="mock-price">$89.99</p>
+    <p id="urgency-text" class="mock-urgency">Order within 2 hrs 14 mins — Only 3 left in stock!</p>
+    <p id="scarcity-text" class="mock-scarcity">In stock — Usually ships within 24 hours</p>
+    <p>Lorem ipsum product description. Premium sound, 30-hour battery, foldable design for travel.</p>
+  </article>
+
+  <div id="deflector-overlay-root" class="deflector-overlay-visible"></div>
+
+  <aside id="deflector-sidebar" class="deflector-sidebar-open" role="complementary" aria-label="Deflector findings panel">
+    <header class="deflector-sidebar-header">
+      <div class="deflector-sidebar-brand">
+        <span class="deflector-logo-mark" role="img" aria-hidden="true"></span>
+        <div>
+          <h2>Deflector</h2>
+          <p class="deflector-sidebar-subtitle deflector-sidebar-subtitle--active">2 pressure tactics found</p>
+        </div>
+      </div>
+      <button type="button" class="deflector-btn deflector-btn--secondary deflector-btn--icon" aria-label="Close">×</button>
+    </header>
+    <div class="deflector-sidebar-body">
+      <ul class="deflector-findings-list">
+        <li>
+          <button type="button" class="deflector-finding deflector-finding--active" style="--deflector-finding-tint: var(--deflector-cat-urgency)">
+            <span class="deflector-finding-num">1</span>
+            <span class="deflector-finding-cat deflector-chip deflector-chip--urgency">Urgency</span>
+            <p class="deflector-finding-text">"Order within 2 hrs 14 mins — Only 3 left in stock!"</p>
+            <p class="deflector-finding-explain">Combines a countdown with low stock to push a quick purchase. <span class="deflector-finding-meta">92% sure</span></p>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="deflector-finding" style="--deflector-finding-tint: var(--deflector-cat-scarcity)">
+            <span class="deflector-finding-num">2</span>
+            <span class="deflector-finding-cat deflector-chip deflector-chip--scarcity">Scarcity</span>
+            <p class="deflector-finding-text">"Only 3 left in stock!"</p>
+            <p class="deflector-finding-explain">Emphasizes limited quantity to create fear of missing out. <span class="deflector-finding-meta">88% sure</span></p>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </aside>
+
+  <button type="button" id="deflector-fab" class="deflector-fab-has-findings" aria-label="Deflector">
+    <span class="deflector-logo-mark deflector-logo-mark--fab" role="img" aria-hidden="true"></span>
+    <span class="deflector-fab-count">2</span>
+  </button>
+
+  <script>
+    window.addEventListener('load', () => {
+      const root = document.getElementById('deflector-overlay-root');
+      const urgency = document.getElementById('urgency-text');
+      const rect = urgency.getBoundingClientRect();
+
+      const wash = document.createElement('div');
+      wash.className = 'deflector-crayon-wash deflector-crayon-wash--urgency deflector-wash-pulse';
+      wash.style.setProperty('--deflector-crayon-rotate', '-0.4deg');
+      wash.style.top = `${rect.top + window.scrollY - 4}px`;
+      wash.style.left = `${rect.left + window.scrollX - 5}px`;
+      wash.style.width = `${rect.width + 10}px`;
+      wash.style.height = `${rect.height + 8}px`;
+      root.classList.add('deflector-overlay-visible');
+      root.appendChild(wash);
+
+      const pill = document.createElement('button');
+      pill.type = 'button';
+      pill.className = 'deflector-annotation-pill deflector-pill-active';
+      pill.style.top = `${rect.top + window.scrollY - 48}px`;
+      pill.style.left = `${Math.max(8, rect.left + window.scrollX)}px`;
+      pill.innerHTML = '<span class="deflector-pill-num">1</span>';
+      root.appendChild(pill);
+    });
+  </script>
+</body>
+</html>

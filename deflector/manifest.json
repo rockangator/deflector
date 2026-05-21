@@ -1,0 +1,51 @@
+{
+  "manifest_version": 3,
+  "name": "Deflector",
+  "version": "0.4.17",
+  "description": "Spot pressure tactics on commerce pages with on-device rules — calm highlights, plain-language alternatives.",
+  "permissions": ["storage", "contextMenus", "activeTab", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["dist/content.js"],
+      "css": [
+        "src/ui/fonts.css",
+        "src/ui/type.css",
+        "src/ui/tokens.css",
+        "src/ui/components.css",
+        "src/ui/motion.css",
+        "src/deflector.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["filters/*.json", "filters/sites/*.json", "src/ui/assets/logo-mark.png"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "commands": {
+    "scan-page": {
+      "suggested_key": { "default": "Alt+Shift+D" },
+      "description": "Scan this page for pressure tactics"
+    }
+  }
+}

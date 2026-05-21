@@ -1,0 +1,89 @@
+/* Deflector tokens — Imbue.com palette + scoped UI roots
+   Requires type.css loaded first (see manifest.json / popup.html). */
+
+#deflector-overlay-root,
+#deflector-overlay-root *,
+#deflector-sidebar,
+#deflector-sidebar *,
+#deflector-fab,
+#deflector-fab *,
+.deflector-fab-hint,
+.deflector-fab-hint *,
+html.deflector-popup,
+html.deflector-popup body {
+  /* imbue.com: --color-background #f5d6a0, --color-secondary #fcefd4, --color-primary #000, --color-accent #f50d00 */
+  --deflector-paper: #fcefd4;
+  --deflector-paper-dark: #f5d6a0;
+  --deflector-paper-ink: #000000;
+  --deflector-ink-muted: rgba(0, 0, 0, 0.62);
+  --deflector-coral: #f50d00;
+  --deflector-coral-deep: #c40a00;
+  --deflector-sage: #2d5a3d;
+  --deflector-sketch: #000000;
+  --deflector-sketch-light: rgba(0, 0, 0, 0.28);
+
+  --deflector-cat-urgency: #ffc9a8;
+  --deflector-cat-scarcity: #f5c4c4;
+  --deflector-cat-social_proof: #b8dce8;
+  --deflector-cat-misdirection: #d4c0e8;
+  --deflector-cat-trick_question: #f0c0c0;
+  --deflector-cat-hidden_cost: #e8d4a8;
+  --deflector-cat-disguised_ad: #c4e8b8;
+
+  /* Readable accents for chips, marks, borders (match overlay stroke tones) */
+  --deflector-cat-urgency-accent: #c40a00;
+  --deflector-cat-scarcity-accent: #a84848;
+  --deflector-cat-social_proof-accent: #3d6d8a;
+  --deflector-cat-misdirection-accent: #6b4d8a;
+  --deflector-cat-trick_question-accent: #a84848;
+  --deflector-cat-hidden_cost-accent: #9a7030;
+  --deflector-cat-disguised_ad-accent: #4a7a42;
+
+  --deflector-shadow-sketch: 3px 3px 0 var(--deflector-sketch);
+  --deflector-shadow-soft: 0 12px 40px rgba(0, 0, 0, 0.14);
+  --deflector-radius-sm: 6px;
+  --deflector-radius-md: 8px;
+  --deflector-z-overlay: 2147483640;
+  --deflector-z-fab: 2147483647;
+  --deflector-z-sidebar: 2147483647;
+
+  --deflector-motion-fast: 150ms ease;
+  --deflector-motion-normal: 240ms cubic-bezier(0.22, 1, 0.36, 1);
+  --deflector-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --deflector-ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --deflector-border-width: 2px;
+  --deflector-shadow-chip: 2px 2px 0 var(--deflector-sketch);
+  --deflector-btn-padding: 12px 14px;
+  --deflector-btn-padding-compact: 8px 14px;
+  --deflector-panel-padding: 16px 18px;
+  --deflector-panel-padding-sm: 12px 14px;
+  --deflector-field-padding: 10px 12px;
+  --deflector-space-gap: 16px;
+  --deflector-space-gap-sm: 8px;
+  --deflector-space-gap-xs: 6px;
+  --deflector-space-gap-md: 12px;
+  --deflector-chrome-padding-x: 20px;
+  --deflector-chrome-padding-y: 20px;
+  --deflector-logo-size: 28px;
+  --deflector-logo-size-fab: 42px;
+  --deflector-fab-size: 56px;
+  --deflector-fab-radius: 13px;
+  --deflector-fab-top: 20vh;
+  --deflector-fab-right: 0px;
+  --deflector-chrome-settings-bg: color-mix(in srgb, var(--deflector-paper-dark) 58%, var(--deflector-paper));
+  --deflector-chrome-settings-accent: var(--deflector-sage);
+  --deflector-chrome-hint-accent: var(--deflector-sage);
+  --deflector-chrome-advanced-accent: var(--deflector-cat-misdirection-accent);
+  --deflector-popup-radius: 10px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #deflector-overlay-root,
+  #deflector-sidebar,
+  #deflector-fab,
+  .deflector-fab-hint,
+  html.deflector-popup {
+    --deflector-motion-fast: 0ms;
+    --deflector-motion-normal: 0ms;
+  }
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wireless Headphones — Demo Store</title>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Wireless Noise-Cancelling Headphones",
+    "offers": { "@type": "Offer", "price": "89.99", "priceCurrency": "USD" }
+  }
+  </script>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      background: #fff;
+      color: #111;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 48px 24px 120px;
+      line-height: 1.5;
+    }
+    .mock-product h1 { font-size: 28px; margin-bottom: 8px; }
+    .mock-price { font-size: 22px; font-weight: 700; margin: 16px 0; }
+    .mock-urgency { color: #b12704; font-weight: 600; }
+    .mock-scarcity { color: #007600; font-weight: 600; }
+    .mock-social { font-size: 14px; color: #565959; margin-bottom: 8px; }
+    .buybox {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 24px;
+      max-width: 320px;
+    }
+    .price { font-size: 24px; font-weight: 700; }
+    button.add-to-cart {
+      width: 100%;
+      margin-top: 12px;
+      padding: 12px;
+      background: #ffd814;
+      border: 1px solid #fcd200;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <article class="mock-product">
+    <h1>Wireless Noise-Cancelling Headphones — Pro Edition</h1>
+    <p class="mock-social">4.6 out of 5 stars · 12,847 ratings</p>
+    <p class="mock-price price" itemprop="price">$89.99</p>
+    <p id="urgency-text" class="mock-urgency">Order within 2 hrs 14 mins — limited time offer expires tonight!</p>
+    <p id="scarcity-text" class="mock-scarcity">Only 3 left in stock — hurry, selling fast!</p>
+    <p id="social-text" class="mock-social">47 people viewing this item right now</p>
+    <p>Lorem ipsum product description. Premium sound, 30-hour battery, foldable design for travel.</p>
+  </article>
+
+  <div class="buybox" id="buybox">
+    <div class="price">$89.99</div>
+    <p class="mock-scarcity">In stock — act now before it's gone</p>
+    <button type="button" class="add-to-cart">Add to Cart</button>
+  </div>
+</body>
+</html>

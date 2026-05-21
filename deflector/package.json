@@ -1,0 +1,17 @@
+{
+  "name": "deflector",
+  "version": "0.4.17",
+  "private": true,
+  "scripts": {
+    "build": "npm run build:fonts && npm run build:icons && node scripts/verify-css-assets.js && esbuild src/content.js --bundle --outfile=dist/content.js --format=iife --target=chrome109 --log-level=warning",
+    "build:fonts": "node scripts/copy-fonts.js",
+    "build:icons": "python scripts/export-icons.py",
+    "demo:record": "node scripts/record-demo.mjs"
+  },
+  "devDependencies": {
+    "@fontsource/dm-mono": "^5.2.5",
+    "@fontsource/libre-caslon-text": "^5.2.5",
+    "esbuild": "^0.25.0",
+    "playwright": "^1.52.0"
+  }
+}

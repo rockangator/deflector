@@ -1,0 +1,48 @@
+{
+  "host": "booking.com",
+  "hostAliases": ["www.booking.com"],
+  "siteRules": [
+    {
+      "id": "booking-urgency-banner",
+      "category": "urgency",
+      "selectors": ["[data-testid*='urgency']", ".bui-banner--urgency", "[class*='urgency']", "[data-component='urgency']"],
+      "confidence": 0.93,
+      "explanation": "Booking.com urgency banner — rooms or deals running out.",
+      "rewrite": "Urgency claim — verify availability"
+    },
+    {
+      "id": "booking-scarcity",
+      "category": "scarcity",
+      "selectors": ["[data-testid*='scarcity']", "[class*='scarcity']", ".hprt-block--scarcity", "[data-testid='limited-availability']"],
+      "confidence": 0.91,
+      "explanation": "Booking.com limited availability messaging.",
+      "rewrite": "Room scarcity — unverifiable"
+    },
+    {
+      "id": "booking-social-proof",
+      "category": "social_proof",
+      "selectors": ["[data-testid*='recently-booked']", "[class*='recently-booked']", "[data-testid*='in-high-demand']"],
+      "confidence": 0.88,
+      "explanation": "Booking.com recent booking or demand signal.",
+      "rewrite": "Booking activity — unverifiable"
+    },
+    {
+      "id": "booking-last-room",
+      "category": "scarcity",
+      "selectors": ["[data-testid='last-room']", "[class*='only_x_left']", ".only_x_left"],
+      "confidence": 0.92,
+      "explanation": "Booking.com 'only X rooms left' pattern.",
+      "rewrite": "Room count — unverifiable"
+    }
+  ],
+  "candidateSelectors": [
+    "[data-testid='property-card']",
+    "[data-testid='availability-cta']",
+    ".hprt-table",
+    "#hprt-table",
+    "[data-testid='price-and-discounted-price']",
+    ".bui-banner",
+    "[data-testid='property-header']",
+    ".sr-card__item"
+  ]
+}

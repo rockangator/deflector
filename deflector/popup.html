@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" class="deflector-popup deflector-scrollbar-transparent">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deflector</title>
+  <link rel="stylesheet" href="src/ui/fonts.css" />
+  <link rel="stylesheet" href="src/ui/type.css" />
+  <link rel="stylesheet" href="src/ui/tokens.css" />
+  <link rel="stylesheet" href="src/ui/components.css" />
+  <link rel="stylesheet" href="src/ui/popup.css" />
+</head>
+<body class="deflector-scrollbar-transparent">
+  <div class="deflector-popup-shell deflector-panel">
+  <header class="deflector-popup-header">
+    <div class="deflector-popup-brand">
+      <span class="deflector-logo-mark" role="img" aria-hidden="true"></span>
+      <div class="deflector-popup-brand-text">
+        <h1>Deflector</h1>
+        <p id="host-label" class="deflector-host-tag">AI working for you, not against you.</p>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="deflector-panel deflector-panel--inset deflector-panel--pad stat" id="stat-block">
+      <div class="stat-value" id="finding-count">—</div>
+      <div class="stat-label" id="stat-label">Pressure tactics on this page</div>
+      <div class="categories" id="category-chips"></div>
+    </div>
+
+    <p id="page-info" class="deflector-meta deflector-page-context"></p>
+
+    <div class="deflector-popup-settings">
+      <label class="deflector-field-label" for="site-mode">When to scan this site</label>
+      <select id="site-mode" class="deflector-field">
+        <option value="auto">Auto on shopping sites</option>
+        <option value="manual">Only when I tap Rescan</option>
+        <option value="always">Every time I open a page</option>
+        <option value="off">Don't scan this site</option>
+      </select>
+
+      <div class="deflector-check-row">
+        <input type="checkbox" id="verbose" />
+        <span>Show less certain matches (about 60–79% sure)</span>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button type="button" id="scan-btn" class="deflector-btn deflector-btn--primary deflector-btn--block">Rescan page</button>
+      <button type="button" id="sidebar-btn" class="deflector-btn deflector-btn--secondary deflector-btn--block">Open panel on page</button>
+    </div>
+
+    <details class="deflector-panel deflector-panel--inset deflector-panel--pad-sm advanced" aria-label="Advanced scan options">
+      <summary>Advanced</summary>
+      <div class="deflector-check-row advanced-check">
+        <input type="checkbox" id="deep-scan" />
+        <span>Deep scan with AI (optional — needs API key below)</span>
+      </div>
+      <label class="deflector-field-label" for="api-key">Anthropic API key (stored in this browser only)</label>
+      <input type="password" id="api-key" class="deflector-field" placeholder="sk-ant-…" autocomplete="off" />
+    </details>
+
+    <p class="deflector-meta" id="filter-version"></p>
+    <p class="deflector-meta" id="status-msg"></p>
+  </main>
+  </div>
+  <script src="src/popup.js"></script>
+</body>
+</html>

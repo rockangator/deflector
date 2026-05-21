@@ -1,0 +1,379 @@
+{
+  "version": "2026.05.1",
+  "textRules": [
+    {
+      "id": "scarcity-only-n-left",
+      "category": "scarcity",
+      "pattern": "\\bonly\\s+\\d+\\s+(left|remaining|in stock|available)\\b",
+      "confidence": 0.9,
+      "rewrite": "Stock claim — unverifiable",
+      "explanation": "Claims limited stock that may be unverifiable or artificially inflated urgency."
+    },
+    {
+      "id": "scarcity-hurry",
+      "category": "scarcity",
+      "pattern": "\\bhurry[,!]?\\s+(only|just)\\s+\\d+\\b",
+      "confidence": 0.88,
+      "rewrite": "Urgency claim — verify independently",
+      "explanation": "Combines hurry language with scarcity to pressure quick decisions."
+    },
+    {
+      "id": "scarcity-almost-gone",
+      "category": "scarcity",
+      "pattern": "\\b(almost sold out|selling fast|going fast|low stock|nearly gone)\\b",
+      "confidence": 0.85,
+      "rewrite": "Availability claim — unverifiable",
+      "explanation": "Vague scarcity language that may not reflect actual inventory."
+    },
+    {
+      "id": "scarcity-high-demand",
+      "category": "scarcity",
+      "pattern": "\\b(high demand|in high demand|popular item|selling quickly)\\b",
+      "confidence": 0.82,
+      "rewrite": "Demand claim — unverifiable",
+      "explanation": "Signals high demand without verifiable data."
+    },
+    {
+      "id": "urgency-limited-time",
+      "category": "urgency",
+      "pattern": "\\b(limited time|limited-time|for a limited time)\\b",
+      "confidence": 0.85,
+      "rewrite": "Time-limited offer — deadline unclear",
+      "explanation": "Creates urgency without specifying when the offer actually ends."
+    },
+    {
+      "id": "urgency-last-chance",
+      "category": "urgency",
+      "pattern": "\\b(last chance|final chance|don't miss out|act now|act fast)\\b",
+      "confidence": 0.87,
+      "rewrite": "Urgency language — verify offer validity",
+      "explanation": "Pressure language designed to rush your decision."
+    },
+    {
+      "id": "urgency-expires",
+      "category": "urgency",
+      "pattern": "\\b(offer expires|deal expires|sale ends|ends (soon|tonight|today|midnight))\\b",
+      "confidence": 0.88,
+      "rewrite": "Expiration claim — may reset or persist",
+      "explanation": "Countdown or expiration messaging that may not reflect a real deadline."
+    },
+    {
+      "id": "urgency-countdown-text",
+      "category": "urgency",
+      "pattern": "\\b\\d{1,2}:\\d{2}:\\d{2}\\b.*\\b(left|remaining|expires)\\b",
+      "confidence": 0.9,
+      "rewrite": "Timer display — verify if real",
+      "explanation": "Numeric countdown paired with expiration language."
+    },
+    {
+      "id": "social-proof-viewing",
+      "category": "social_proof",
+      "pattern": "\\b\\d+\\s+(people|users|customers|others)\\s+(viewing|looking at|watching|browsing)\\b",
+      "confidence": 0.88,
+      "rewrite": "Viewer count — unverifiable",
+      "explanation": "Live viewer counts are often fabricated or inflated."
+    },
+    {
+      "id": "social-proof-recent-purchase",
+      "category": "social_proof",
+      "pattern": "\\b(someone|a customer|just bought|just purchased|recently bought|recently purchased)\\b",
+      "confidence": 0.8,
+      "rewrite": "Purchase notification — may be fabricated",
+      "explanation": "Activity notifications that may not reflect real recent purchases."
+    },
+    {
+      "id": "social-proof-named-city",
+      "category": "social_proof",
+      "pattern": "\\b[A-Z][a-z]+ from [A-Z][a-z]+\\b.*\\b(bought|purchased|ordered|saved)\\b",
+      "confidence": 0.85,
+      "rewrite": "Named purchase claim — unverifiable",
+      "explanation": "Named person + city purchase claims are a common social proof template."
+    },
+    {
+      "id": "social-proof-in-cart",
+      "category": "social_proof",
+      "pattern": "\\b\\d+\\s+(people|users|customers)\\s+(have this|added this|in their cart)\\b",
+      "confidence": 0.86,
+      "rewrite": "Cart activity — unverifiable",
+      "explanation": "Claims others have the item in cart to increase perceived demand."
+    },
+    {
+      "id": "misdirection-confirmshame",
+      "category": "misdirection",
+      "pattern": "\\bno thanks,? i (don't|do not) want (to )?(save|get|enjoy|miss)\\b",
+      "confidence": 0.92,
+      "rewrite": "Decline option — neutral wording suggested",
+      "explanation": "Confirmshaming: the decline option uses guilt language."
+    },
+    {
+      "id": "misdirection-confirmshame-short",
+      "category": "misdirection",
+      "pattern": "\\b(i'll pass on saving|no,? i hate saving|no,? i prefer paying full)\\b",
+      "confidence": 0.9,
+      "rewrite": "Decline option — neutral wording suggested",
+      "explanation": "Confirmshaming language on a dismiss or decline button."
+    },
+    {
+      "id": "misdirection-trick-decline",
+      "category": "misdirection",
+      "pattern": "\\b(no,? thanks,? i('m| am) (fine|good) (without|paying))\\b",
+      "confidence": 0.88,
+      "rewrite": "Decline option — neutral wording suggested",
+      "explanation": "Dismiss CTA framed to make declining feel like a bad choice."
+    },
+    {
+      "id": "trick-double-negative",
+      "category": "trick_question",
+      "pattern": "\\b(un(check|tick)|do not un(check|tick)|don't un(check|tick))\\b",
+      "confidence": 0.9,
+      "rewrite": "Confusing opt-out language",
+      "explanation": "Double-negative phrasing makes it easy to opt in by mistake."
+    },
+    {
+      "id": "trick-opt-out-by-checking",
+      "category": "trick_question",
+      "pattern": "\\bcheck (this )?box (to )?(opt out|unsubscribe|decline|not receive)\\b",
+      "confidence": 0.88,
+      "rewrite": "Non-standard opt-out — read carefully",
+      "explanation": "Requires checking a box to opt out, reversing normal expectations."
+    },
+    {
+      "id": "trick-preselected-yes",
+      "category": "trick_question",
+      "pattern": "\\b(yes[,!]? (sign me up|send me|i want|subscribe me))\\b",
+      "confidence": 0.75,
+      "rewrite": "Marketing opt-in — verify your choice",
+      "explanation": "Marketing consent language often paired with pre-checked boxes."
+    },
+    {
+      "id": "hidden-cost-fee",
+      "category": "hidden_cost",
+      "pattern": "\\b(additional (fees|charges|costs)|service fee|handling fee|resort fee|convenience fee)\\b",
+      "confidence": 0.78,
+      "rewrite": "Extra fee — verify total price",
+      "explanation": "Fees that may not have been shown earlier in the purchase flow."
+    },
+    {
+      "id": "hidden-cost-plus-tax",
+      "category": "hidden_cost",
+      "pattern": "\\b(\\+ tax|\\+ taxes and fees|before tax|excluding tax|plus shipping)\\b",
+      "confidence": 0.72,
+      "rewrite": "Price may not include all costs",
+      "explanation": "Displayed price may exclude taxes, fees, or shipping."
+    },
+    {
+      "id": "disguised-ad-sponsored",
+      "category": "disguised_ad",
+      "pattern": "\\b(sponsored content|paid partnership|promoted post|advertorial)\\b",
+      "confidence": 0.8,
+      "rewrite": "Paid content — disclosed",
+      "explanation": "Paid or sponsored content that may be styled like editorial material."
+    },
+    {
+      "id": "disguised-ad-recommended",
+      "category": "disguised_ad",
+      "pattern": "\\b(recommended for you|you might also like|sponsored recommendation)\\b",
+      "confidence": 0.65,
+      "rewrite": "Recommendation — may be paid placement",
+      "explanation": "Recommendation language that may indicate paid placement."
+    },
+    {
+      "id": "urgency-rooms-left",
+      "category": "urgency",
+      "pattern": "\\b(only|just)\\s+\\d+\\s+(room|rooms|seat|seats|spot|spots)\\s+(left|remaining|available)\\b",
+      "confidence": 0.91,
+      "rewrite": "Availability claim — unverifiable",
+      "explanation": "Common booking-site urgency pattern for rooms or seats."
+    },
+    {
+      "id": "urgency-booked-times",
+      "category": "urgency",
+      "pattern": "\\bbooked\\s+\\d+\\s+times\\s+(in the )?(last|past)\\s+\\d+\\s+(hours?|minutes?|days?)\\b",
+      "confidence": 0.89,
+      "rewrite": "Booking activity — unverifiable",
+      "explanation": "Recent booking count used to create urgency on travel sites."
+    },
+    {
+      "id": "scarcity-in-stock-soon",
+      "category": "scarcity",
+      "pattern": "\\b(only \\d+ left at this price|price may (go up|increase)|lock in this (price|rate))\\b",
+      "confidence": 0.84,
+      "rewrite": "Price scarcity — verify independently",
+      "explanation": "Suggests price or availability will change imminently."
+    },
+    {
+      "id": "social-proof-best-seller",
+      "category": "social_proof",
+      "pattern": "\\b(#\\d+ best seller|best seller in|top rated in)\\b",
+      "confidence": 0.6,
+      "rewrite": "Ranking claim — verify category",
+      "explanation": "Best-seller badges can be category-specific or time-limited."
+    },
+    {
+      "id": "misdirection-free-trial",
+      "category": "misdirection",
+      "pattern": "\\b(start your free trial|try free for \\d+ days)\\b",
+      "confidence": 0.55,
+      "rewrite": "Free trial — check cancellation terms",
+      "explanation": "Free trial offers may auto-convert to paid subscriptions."
+    },
+    {
+      "id": "trick-agree-all",
+      "category": "trick_question",
+      "pattern": "\\b(agree to all|accept all|select all)\\b",
+      "confidence": 0.7,
+      "rewrite": "Bulk consent — review individual options",
+      "explanation": "Single action may consent to multiple terms or marketing channels."
+    },
+    {
+      "id": "hidden-subscription-renew",
+      "category": "hidden_cost",
+      "pattern": "\\b(auto[- ]?renew|automatically renew|recurring (charge|payment|billing))\\b",
+      "confidence": 0.75,
+      "rewrite": "Recurring charge — verify terms",
+      "explanation": "Subscription or auto-renewal terms that may be easy to miss."
+    },
+    {
+      "id": "urgency-flash-sale",
+      "category": "urgency",
+      "pattern": "\\b(flash sale|today only|24[- ]hour sale|ends in \\d+ (hours?|minutes?))\\b",
+      "confidence": 0.83,
+      "rewrite": "Sale deadline — verify if real",
+      "explanation": "Flash sale language designed to create immediate pressure."
+    },
+    {
+      "id": "social-proof-trusted-by",
+      "category": "social_proof",
+      "pattern": "\\b(trusted by \\d+[,.]?\\d*\\+? (companies|customers|users|people))\\b",
+      "confidence": 0.55,
+      "rewrite": "Trust claim — verify source",
+      "explanation": "Large round-number trust claims without verifiable source."
+    },
+    {
+      "id": "scarcity-wont-last",
+      "category": "scarcity",
+      "pattern": "\\b(won't last|selling out|sell out soon|while supplies last)\\b",
+      "confidence": 0.8,
+      "rewrite": "Availability claim — unverifiable",
+      "explanation": "Open-ended scarcity without specific inventory data."
+    },
+    {
+      "id": "misdirection-continue-without",
+      "category": "misdirection",
+      "pattern": "\\bcontinue without (protection|insurance|warranty|coverage|saving)\\b",
+      "confidence": 0.86,
+      "rewrite": "Upsell decline — neutral wording",
+      "explanation": "Declining add-ons framed as accepting risk or loss."
+    },
+    {
+      "id": "trick-uncheck-opt-out",
+      "category": "trick_question",
+      "pattern": "\\b(tick|check) (here )?if you (do not|don't) wish to receive\\b",
+      "confidence": 0.87,
+      "rewrite": "Opt-out requires action — easy to miss",
+      "explanation": "Opt-out requires actively checking, unlike standard unchecked defaults."
+    },
+    {
+      "id": "disguised-ad-native",
+      "category": "disguised_ad",
+      "pattern": "\\b(from our partners|partner content|presented by)\\b",
+      "confidence": 0.68,
+      "rewrite": "Partner content — may be paid",
+      "explanation": "Partner-labeled content that may be paid placement."
+    },
+    {
+      "id": "urgency-someone-booking",
+      "category": "urgency",
+      "pattern": "\\b\\d+\\s+(other )?(people|travelers|guests)?\\s*(are )?(looking|viewing|booking)\\b",
+      "confidence": 0.87,
+      "rewrite": "Concurrent activity — unverifiable",
+      "explanation": "Claims others are simultaneously viewing or booking."
+    },
+    {
+      "id": "hidden-cost-delivery",
+      "category": "hidden_cost",
+      "pattern": "\\b(delivery fee|shipping (fee|cost)|care & handling)\\b",
+      "confidence": 0.76,
+      "rewrite": "Additional delivery cost",
+      "explanation": "Delivery or handling fees added during checkout."
+    },
+    {
+      "id": "scarcity-one-left",
+      "category": "scarcity",
+      "pattern": "\\b(just 1 left|only one left|1 remaining)\\b",
+      "confidence": 0.91,
+      "rewrite": "Single-item claim — unverifiable",
+      "explanation": "Single remaining item claim — common scarcity template."
+    },
+    {
+      "id": "social-proof-popular-now",
+      "category": "social_proof",
+      "pattern": "\\b(popular (now|right now|today)|trending now|hot item)\\b",
+      "confidence": 0.65,
+      "rewrite": "Popularity claim — unverifiable",
+      "explanation": "Popularity labels without transparent ranking criteria."
+    },
+    {
+      "id": "misdirection-gray-decline",
+      "category": "misdirection",
+      "pattern": "\\b(maybe later|not now|skip (this )?offer)\\b",
+      "confidence": 0.5,
+      "rewrite": "Secondary action — check visual prominence",
+      "explanation": "Low-confidence: may be paired with visually de-emphasized styling."
+    }
+  ],
+  "structuralRules": [
+    {
+      "id": "countdown-timer",
+      "category": "urgency",
+      "selector": "[class*='countdown'], [class*='timer'], [class*='Timer'], [data-countdown], [id*='countdown'], [id*='timer']",
+      "check": "hasNumericCountdown",
+      "confidence": 0.95,
+      "explanation": "Countdown timer element detected on page.",
+      "rewrite": "Timer — verify if deadline is real"
+    },
+    {
+      "id": "pre-checked-consent",
+      "category": "trick_question",
+      "selector": "input[type=checkbox]:checked",
+      "check": "nearMarketingCopy",
+      "confidence": 0.8,
+      "explanation": "Pre-checked marketing or consent checkbox.",
+      "rewrite": "Review pre-selected consent options"
+    },
+    {
+      "id": "disguised-ad-hidden-label",
+      "category": "disguised_ad",
+      "selector": "[class*='sponsor'], [class*='promoted'], [class*='advert'], [data-ad], [aria-label*='sponsored' i]",
+      "check": "hiddenOrTinyLabel",
+      "confidence": 0.85,
+      "explanation": "Ad or sponsored label may be visually hidden or minimized.",
+      "rewrite": "Sponsored content — disclosure may be obscured"
+    },
+    {
+      "id": "misdirection-low-contrast-decline",
+      "category": "misdirection",
+      "selector": "[role=dialog] a, [role=dialog] button, .modal a, .modal button, [class*='popup'] a, [class*='popup'] button",
+      "check": "lowContrastSecondaryCta",
+      "confidence": 0.82,
+      "explanation": "Decline or dismiss option appears visually de-emphasized.",
+      "rewrite": "Check if decline option is harder to notice"
+    },
+    {
+      "id": "activity-notification-toast",
+      "category": "social_proof",
+      "selector": "[class*='notification'], [class*='toast'], [class*='activity'], [class*='social-proof'], [class*='recent-purchase']",
+      "check": "activityToastPattern",
+      "confidence": 0.83,
+      "explanation": "Activity notification toast — may show fabricated purchases.",
+      "rewrite": "Live activity — unverifiable"
+    }
+  ],
+  "exceptions": [
+    { "host": "wikipedia.org", "action": "disable" },
+    { "host": "github.com", "action": "disable" },
+    { "host": "stackoverflow.com", "action": "disable" },
+    { "host": "docs.google.com", "action": "disable" },
+    { "pattern": "only \\d+ left", "host": "stackoverflow.com", "action": "ignore" }
+  ]
+}

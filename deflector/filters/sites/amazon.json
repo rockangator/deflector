@@ -1,0 +1,49 @@
+{
+  "host": "amazon.com",
+  "hostAliases": ["amazon.co.uk", "amazon.de", "amazon.fr", "amazon.ca", "amazon.in", "amazon.es", "amazon.it"],
+  "siteRules": [
+    {
+      "id": "amazon-availability",
+      "category": "scarcity",
+      "selectors": ["#availability", "#outOfStock", ".a-color-success", ".a-color-price"],
+      "confidence": 0.9,
+      "explanation": "Amazon availability messaging — verify stock claims.",
+      "rewrite": "Stock claim — unverifiable"
+    },
+    {
+      "id": "amazon-social-proof",
+      "category": "social_proof",
+      "selectors": ["#social-proofing-faceout", "[class*='social-proof']", "#zeitgeistBadge_feature_div"],
+      "confidence": 0.85,
+      "explanation": "Amazon social proof or popularity badge.",
+      "rewrite": "Popularity claim — verify independently"
+    },
+    {
+      "id": "amazon-deal-badge",
+      "category": "urgency",
+      "selectors": ["#dealBadge_feature_div", "[class*='dealBadge']", "#apex_dealBadge"],
+      "confidence": 0.82,
+      "explanation": "Amazon deal or limited-time badge.",
+      "rewrite": "Deal badge — verify expiration"
+    },
+    {
+      "id": "amazon-ac-badge",
+      "category": "social_proof",
+      "selectors": ["#acBadge_feature_div", "#acBadge"],
+      "confidence": 0.8,
+      "explanation": "Amazon 'X bought in past month' activity claim.",
+      "rewrite": "Purchase activity — unverifiable"
+    }
+  ],
+  "candidateSelectors": [
+    "#corePrice_feature_div",
+    "#apex_desktop",
+    "#buybox",
+    "#ppd",
+    "[data-feature-name='corePrice']",
+    "#social-proofing-faceout",
+    "#availability",
+    "#desktop_buybox",
+    "#olpLinkWidget_feature_div"
+  ]
+}

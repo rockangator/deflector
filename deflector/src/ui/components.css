@@ -1,0 +1,286 @@
+/* Deflector UI primitives — extracted per /impeccable extract
+   Import after tokens.css. Use with BEM modifiers. */
+
+/* ─── Buttons (4+ call sites) ─── */
+
+.deflector-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--deflector-btn-padding);
+  border: var(--deflector-border-width) solid var(--deflector-sketch);
+  border-radius: var(--deflector-radius-sm);
+  font-family: var(--deflector-font-ui);
+  font-size: var(--type-label);
+  font-weight: 500;
+  line-height: var(--leading-ui);
+  letter-spacing: var(--tracking-wide);
+  cursor: pointer;
+  box-shadow: var(--deflector-shadow-sketch);
+  appearance: none;
+  -webkit-appearance: none;
+  text-decoration: none;
+  color: inherit;
+  transition: transform var(--deflector-motion-fast) var(--deflector-ease-out),
+    box-shadow var(--deflector-motion-fast) var(--deflector-ease-out),
+    background var(--deflector-motion-fast) var(--deflector-ease-out);
+}
+
+.deflector-btn--primary {
+  background: var(--deflector-coral);
+  color: #fff;
+}
+
+.deflector-btn--primary:hover {
+  background: var(--deflector-coral-deep);
+}
+
+.deflector-btn--secondary {
+  background: var(--deflector-paper);
+  color: var(--deflector-paper-ink);
+}
+
+.deflector-btn--secondary:hover {
+  background: var(--deflector-paper-dark);
+}
+
+.deflector-btn--compact {
+  padding: var(--deflector-btn-padding-compact);
+}
+
+.deflector-btn--block {
+  width: 100%;
+}
+
+.deflector-btn--icon {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  flex-shrink: 0;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.deflector-btn:focus-visible {
+  outline: 2px solid var(--deflector-coral);
+  outline-offset: 2px;
+}
+
+.deflector-btn:active {
+  transform: translateY(2px);
+  box-shadow: 1px 1px 0 var(--deflector-sketch);
+}
+
+.deflector-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: var(--deflector-shadow-chip);
+}
+
+.deflector-btn:disabled:active {
+  transform: none;
+  box-shadow: var(--deflector-shadow-chip);
+}
+
+/* ─── Panels (4+ call sites: stat, finding, hint, advanced) ─── */
+
+.deflector-panel {
+  border: var(--deflector-border-width) solid var(--deflector-sketch);
+  border-radius: var(--deflector-radius-md);
+  box-shadow: var(--deflector-shadow-sketch);
+}
+
+.deflector-panel--inset {
+  background: var(--deflector-paper-dark);
+}
+
+.deflector-panel--paper {
+  background: var(--deflector-paper);
+}
+
+.deflector-panel--pad {
+  padding: var(--deflector-panel-padding);
+}
+
+.deflector-panel--pad-sm {
+  padding: var(--deflector-panel-padding-sm);
+}
+
+/* ─── Fields (3+ call sites: popup select/input, sidebar select) ─── */
+
+.deflector-field {
+  width: 100%;
+  padding: var(--deflector-field-padding);
+  border-radius: var(--deflector-radius-sm);
+  border: var(--deflector-border-width) solid var(--deflector-sketch);
+  background: var(--deflector-paper);
+  color: var(--deflector-paper-ink);
+  font-family: var(--deflector-font-ui);
+  font-size: var(--type-body);
+  line-height: var(--leading-body);
+  box-shadow: var(--deflector-shadow-chip);
+  transition: border-color var(--deflector-motion-fast) var(--deflector-ease-out),
+    box-shadow var(--deflector-motion-fast) var(--deflector-ease-out);
+}
+
+.deflector-field:focus-visible {
+  outline: none;
+  border-color: var(--deflector-coral-deep);
+  box-shadow: var(--deflector-shadow-chip), 0 0 0 2px rgba(245, 13, 0, 0.18);
+}
+
+.deflector-field-label {
+  font-size: var(--type-label);
+  color: var(--deflector-ink-muted);
+  display: block;
+  margin-bottom: var(--deflector-space-gap-xs);
+  font-weight: 500;
+  line-height: var(--leading-ui);
+}
+
+/* ─── Chip (category badges) ─── */
+
+.deflector-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: var(--type-label);
+  font-weight: 600;
+  line-height: var(--leading-ui);
+  padding: 5px 10px;
+  border-radius: var(--deflector-radius-sm);
+  background: var(--deflector-paper);
+  border: var(--deflector-border-width) solid var(--deflector-sketch);
+  box-shadow: var(--deflector-shadow-chip);
+}
+
+.deflector-chip--urgency {
+  background: color-mix(in srgb, var(--deflector-cat-urgency) 72%, var(--deflector-paper));
+  border-color: var(--deflector-cat-urgency-accent);
+}
+
+.deflector-chip--scarcity {
+  background: color-mix(in srgb, var(--deflector-cat-scarcity) 72%, var(--deflector-paper));
+  border-color: var(--deflector-cat-scarcity-accent);
+}
+
+.deflector-chip--social_proof {
+  background: color-mix(in srgb, var(--deflector-cat-social_proof) 72%, var(--deflector-paper));
+  border-color: var(--deflector-cat-social_proof-accent);
+}
+
+.deflector-chip--misdirection {
+  background: color-mix(in srgb, var(--deflector-cat-misdirection) 72%, var(--deflector-paper));
+  border-color: var(--deflector-cat-misdirection-accent);
+}
+
+.deflector-chip--trick_question {
+  background: color-mix(in srgb, var(--deflector-cat-trick_question) 72%, var(--deflector-paper));
+  border-color: var(--deflector-cat-trick_question-accent);
+}
+
+.deflector-chip--hidden_cost {
+  background: color-mix(in srgb, var(--deflector-cat-hidden_cost) 72%, var(--deflector-paper));
+  border-color: var(--deflector-cat-hidden_cost-accent);
+}
+
+.deflector-chip--disguised_ad {
+  background: color-mix(in srgb, var(--deflector-cat-disguised_ad) 72%, var(--deflector-paper));
+  border-color: var(--deflector-cat-disguised_ad-accent);
+}
+
+.deflector-chip[class*="deflector-chip--"]::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid var(--deflector-sketch);
+  flex-shrink: 0;
+  background: var(--deflector-cat-urgency-accent);
+}
+
+.deflector-chip--urgency::before { background: var(--deflector-cat-urgency-accent); }
+.deflector-chip--scarcity::before { background: var(--deflector-cat-scarcity-accent); }
+.deflector-chip--social_proof::before { background: var(--deflector-cat-social_proof-accent); }
+.deflector-chip--misdirection::before { background: var(--deflector-cat-misdirection-accent); }
+.deflector-chip--trick_question::before { background: var(--deflector-cat-trick_question-accent); }
+.deflector-chip--hidden_cost::before { background: var(--deflector-cat-hidden_cost-accent); }
+.deflector-chip--disguised_ad::before { background: var(--deflector-cat-disguised_ad-accent); }
+
+/* ─── Layout compositions ─── */
+
+.deflector-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--deflector-space-gap);
+}
+
+.deflector-stack--sm {
+  gap: var(--deflector-space-gap-sm);
+}
+
+.deflector-check-row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--deflector-space-gap-md);
+}
+
+.deflector-check-row input[type="checkbox"] {
+  width: auto;
+  margin-top: 3px;
+  flex-shrink: 0;
+  accent-color: var(--deflector-coral);
+}
+
+.deflector-check-row span {
+  font-size: var(--type-body);
+  line-height: var(--leading-body);
+}
+
+/* ─── Meta text ─── */
+
+.deflector-meta {
+  font-size: var(--type-caption);
+  color: var(--deflector-ink-muted);
+  line-height: var(--leading-caption);
+  max-width: var(--measure-body);
+}
+
+.deflector-meta--error {
+  color: var(--deflector-coral-deep);
+}
+
+.deflector-meta--ok {
+  color: var(--deflector-sage);
+}
+
+/* ─── Transparent scrollbars (popup, sidebar) ─── */
+
+.deflector-scrollbar-transparent {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+.deflector-scrollbar-transparent::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  background: transparent;
+}
+
+.deflector-scrollbar-transparent::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.deflector-scrollbar-transparent::-webkit-scrollbar-thumb {
+  background: transparent;
+  border: none;
+}
+
+.deflector-scrollbar-transparent::-webkit-scrollbar-corner {
+  background: transparent;
+}

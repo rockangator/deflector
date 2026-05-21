@@ -1,0 +1,34 @@
+/* Imbue typography — Caslon Ionic (display) + ABC Diatype Semi Mono (UI)
+   Source: https://imbue.com/ */
+
+@font-face {
+  font-family: "Caslon Ionic";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./fonts/caslon-ionic-400.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "ABC Diatype Semi Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./fonts/abc-semi-mono-400.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "ABC Diatype Semi Mono";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("./fonts/abc-semi-mono-500.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "ABC Diatype Semi Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("./fonts/abc-semi-mono-700.woff2") format("woff2");
+}
